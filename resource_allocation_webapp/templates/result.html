@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulation Results - Cloud Resource Allocation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #004080;
+        }
+        .plot {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        a {
+            text-decoration: none;
+            color: #004080;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p.summary {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulation Results</h1>
+        <p class="summary"><strong>Total Simulation Steps:</strong> {{ steps }}</p>
+        <p class="summary"><strong>Average Reward:</strong> {{ avg_reward | round(4) }}</p>
+        <h2>Performance Visualizations</h2>
+        <div class="plot">
+            <h3>Resource Allocation vs. Actual CPU Demand</h3>
+            <img src="data:image/png;base64,{{ images['allocation'] }}" alt="Allocation vs Demand">
+        </div>
+        <div class="plot">
+            <h3>Agent Reward Trend Over Time</h3>
+            <img src="data:image/png;base64,{{ images['reward'] }}" alt="Agent Reward">
+        </div>
+        <div class="plot">
+            <h3>Allocation Error Trend</h3>
+            <img src="data:image/png;base64,{{ images['error'] }}" alt="Allocation Error">
+        </div>
+        <div class="plot">
+            <h3>Stacked CPU Demand vs Allocation</h3>
+            <img src="data:image/png;base64,{{ images['stacked'] }}" alt="Stacked Plot">
+        </div>
+        <p><a href="/">&#8592; Run another simulation</a></p>
+    </div>
+</body>
+</html>

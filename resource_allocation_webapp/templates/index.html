@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Resource Allocation Simulation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #004080;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #004080;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #003060;
+        }
+        p.info {
+            font-size: 0.95em;
+            background-color: #e6f2ff;
+            padding: 10px;
+            border-left: 5px solid #004080;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud Resource Allocation Simulation</h1>
+        <p class="info">
+            This interactive simulation demonstrates an intelligent cloud resource allocation framework based on machine learning concepts. 
+            The system is designed to adjust CPU resource allocation dynamically based on simulated workload data.
+        </p>
+        <h2>Simulation Parameters</h2>
+        <p>
+            Please specify the <strong>number of simulation steps</strong> you would like to run. Increasing the steps provides a more detailed simulation, but may increase computation time.
+        </p>
+        <form action="/simulate" method="post">
+            <label for="total_steps">Total Simulation Steps:</label><br>
+            <input type="number" name="total_steps" id="total_steps" value="100" min="10" required>
+            <br>
+            <input type="submit" value="Run Simulation">
+        </form>
+        <h2>About the Simulation</h2>
+        <p>
+            <strong>Background:</strong> Based on research on resource allocation optimization in cloud computing environments, this simulation uses a dummy agent (a heuristic-based predictor) to mimic dynamic allocation. The technical goal is to minimize the penalty between allocated CPU resources and actual demand, while considering operational costs.
+        </p>
+        <p>
+            <strong>Inputs:</strong> The primary input is the number of simulation steps. Future versions could allow more detailed configuration, such as adjusting penalty weights and demand profiles.
+        </p>
+    </div>
+</body>
+</html>

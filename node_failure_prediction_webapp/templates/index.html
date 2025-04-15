@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Center Node Failure Predictor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f9f9f9; }
+    .card { margin-top: 20px; }
+    .diagnostic-img { max-width: 100%; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="text-center mb-4">☁️ Data Center Node Failure Prediction</h1>
+    <p class="lead text-center">Predict potential node failures based on temporal and spatial metrics using a hybrid ML ranking pipeline (MING-inspired).</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <form method="POST">
+          <div class="card p-3 shadow-sm">
+            <h5>📈 Temporal Data Input</h5>
+            <p class="small text-muted">Enter 10 lines with 20 comma-separated values each (e.g., CPU, I/O, network stats).</p>
+            <textarea name="temporal" class="form-control" rows="10" placeholder="0.1,0.2,...,2.0\n..."></textarea>
+          </div>
+
+          <div class="card p-3 shadow-sm mt-3">
+            <h5>🧩 Spatial Data Input</h5>
+            <p class="small text-muted">One line with 10 comma-separated values (e.g., rack ID, hardware config).</p>
+            <input type="text" name="spatial" class="form-control" placeholder="0.1,0.3,...,1.0" />
+          </div>
+
+          <div class="text-end mt-3">
+            <button class="btn btn-primary btn-lg">🚀 Predict</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        {% if result %}
+        <div class="card p-4 shadow">
+          <h4 class="text-center">🔍 Prediction Result</h4>
+          <p class="mb-1"><strong>Ranking Score:</strong> {{ result.score }}</p>
+          <p class="mb-1"><strong>Status:</strong> <span class="fw-bold" style="color: {{ result.color }}">{{ result.status }}</span></p>
+          <p class="mb-3 text-muted"><em>Score > threshold → classified as FAULTY</em></p>
+          <h6>📊 Diagnostic Cost Plot</h6>
+          <img src="data:image/png;base64,{{ result.plot }}" class="diagnostic-img" />
+        </div>
+        {% else %}
+        <div class="card p-4 shadow text-muted text-center">
+          <p>No prediction yet. Enter data on the left and click "Predict".</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center mt-5 text-muted small">
+    &copy; 2025 | Cloud AI Systems Lab | MING-Inspired Node Failure Ranker
+  </footer>
+</body>
+</html>
